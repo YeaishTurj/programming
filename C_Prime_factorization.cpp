@@ -25,21 +25,21 @@ bool compare(pair<int,int>&a, pair<int,int>&b){
 }
 int main(){
     fast_IO
-    w(t){
-        int n, k; cin>>n>>k;
-        string str; cin>>str;
-        map<char,int>m;
-        for(auto &it: str) m[it]++;
-        int odd=0, even=0;
-        for(auto &it: m)
-            if(it.second&1) odd++;
-            else even++;
-        if(k-odd>=0) cout<<"YES"<<nn;
-        else{
-            if((odd-k)==1) cout<<"YES"<<nn;
-            else cout<<"NO"<<nn;
+    int n; cin>>n;
+    int m=n+10;
+    int a[m];
+    for(int i=0; i<m; i++) a[i]=i;
+    for(int i=2; i<=sqrt(m); i++){
+        for(int j=2*i; j<m; j+=i){
+            if(a[j]==j) a[j]=i;
         }
-        // cout<<"-------------"<<nn;
+    }
+    // for(int i=1; i<=n; i++) cout<<i<<" "<<a[i]<<nn;
+    while(1){
+        cout<<a[n];
+        n/=a[n];
+        if(n==1) break;
+        cout<<"*";
     }
     return 0;
 }

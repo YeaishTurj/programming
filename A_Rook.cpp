@@ -26,20 +26,15 @@ bool compare(pair<int,int>&a, pair<int,int>&b){
 int main(){
     fast_IO
     w(t){
-        int n, k; cin>>n>>k;
         string str; cin>>str;
-        map<char,int>m;
-        for(auto &it: str) m[it]++;
-        int odd=0, even=0;
-        for(auto &it: m)
-            if(it.second&1) odd++;
-            else even++;
-        if(k-odd>=0) cout<<"YES"<<nn;
-        else{
-            if((odd-k)==1) cout<<"YES"<<nn;
-            else cout<<"NO"<<nn;
+        for(int i=1; i<=8; i++){
+            if(i==str[1]-'0') continue;
+            cout<<str[0]<<i<<nn;
         }
-        // cout<<"-------------"<<nn;
+        for(int i=0; i<8; i++){
+            if(char(i+'a')==str[0]) continue;
+            cout<<char('a'+i)<<str[1]<<nn;
+        }
     }
     return 0;
 }
