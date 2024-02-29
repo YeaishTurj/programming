@@ -39,23 +39,18 @@ int main(){
             if(x_h.find(abs(x[i]))==x_h.end()) x_h[abs(x[i])]=h[i];
             else x_h[abs(x[i])]+=h[i];
         }
-        cout<<k<<nn;
-        ll bullet=k, cnt=0, flag=1;
-        vector<pair<ll,ll>>v;
-        for(auto &it: x_h) cout<<it.first<<"->"<<it.second<<nn;
-        for(auto &it: x_h) v.pb({it.first,it.second});
-        for(int i=0; i<v.size(); i++){
-            auto it=v[i];
-            if(it.second-cnt<=0){
+        // cout<<k<<nn;
+        ll bullet=0, total=0, flag=1;
+        // for(auto &it: x_h) cout<<it.first<<" "<<it.second<<nn;
+        for(auto &it: x_h){
+            total+=it.second;
+            bullet=it.first*k;
+            if(total>bullet){
                 flag=0; break;
-            }
-            it.second-=bullet;
-            if(it.second==0){
-                bullet=k; cnt++;
             }
         }
         cout<<(flag?"YES":"NO")<<nn;
-        cout<<"------------------"<<nn;
+        // cout<<"------------------"<<nn;
     }
     return 0;
 }
