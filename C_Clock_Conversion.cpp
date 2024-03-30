@@ -30,23 +30,15 @@ bool compare(pair<int,int>&a, pair<int,int>&b){
 int32_t main(){
     fast_IO
     w(t){
-        int k,n,a,b; cin>>k>>n>>a>>b;
-        int l=0, r=k/a, ans=-1;
-        if(k%a==0) r--;
-        r=min(n,r);
-        while(l<=r){
-            int mid=(l+r)/2;
-            int chargeLeft=k-mid*a, turnLeft=k-mid;
-            int playWithB=chargeLeft/b;
-            if(chargeLeft%b==0) playWithB--;
-            // cout<<mid<<" "<<playWithB<<nn;
-            // if(playWithB+mid==n) ans=mid, l=mid+1;
-            if(playWithB+mid>=n) l=mid+1;
-            else r=mid-1;
-        }
-        // cout<<l<<" "<<r<<nn;
-        cout<<r<<nn;
-        // cout<<"----------------"<<nn;
+        int h,m;
+        string str; cin>>str;
+        h=10*(str[0]-'0')+str[1]-'0';
+        m=10*(str[3]-'0')+str[4]-'0';
+        // cout<<h<<" "<<m<<nn;
+        if(h==0) cout<<setw(2)<<setfill('0')<<h+12<<":"<<setw(2)<<setfill('0')<<m<<" AM"<<nn;
+        if(h>=1 && h<12) cout<<setw(2)<<setfill('0')<<h<<":"<<setw(2)<<setfill('0')<<m<<" AM"<<nn;
+        else if(h==12) cout<<setw(2)<<setfill('0')<<h<<":"<<setw(2)<<setfill('0')<<m<<" PM"<<nn;
+        else if(h>=13 && h<24) cout<<setw(2)<<setfill('0')<<h-12<<":"<<setw(2)<<setfill('0')<<m<<" PM"<<nn;
     }
     return 0;
 }
