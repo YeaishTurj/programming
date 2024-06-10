@@ -5,7 +5,6 @@ using namespace std;
 using namespace __gnu_pbds;
 #define Oset tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
 #define fast_IO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define w(t) int t; cin>>t; while(t--)
 #define nn "\n"
 #define int long long
 #define pb push_back
@@ -23,17 +22,30 @@ bool compare(pair<int,int>&a, pair<int,int>&b){
     }
     return true;
 }
+void solve(){
+    int n; cin>>n;
+    vector<int>v(n);
+    for(auto &it: v) cin>>it;
+    if(n==2){
+        cout<<min(v[0],v[1])<<nn;
+        return;
+    }
+    int ans=INT_MIN;
+    for(int i=0; i<n-2; i++){
+        vector<int>v1={v[i],v[i+1],v[i+2]};
+        sort(v1.begin(),v1.end());
+        // for(auto &it: v1) cout<<it<<" "; cout<<nn;
+        // cout<<v1[1]<<nn;
+        ans=max(v1[1],ans);
+    }
+    cout<<ans<<nn;
+}
 int32_t main(){
     fast_IO
-    w(t){
-        int a,b,c; cin>>a>>b>>c;
-        if((a+b+c)&1) cout<<-1<<nn;
-        else{
-            if(a+b<c) cout<<a+b<<nn;
-            else{
-                cout<<(a+b+c)/2<<nn;
-            }
-        }
+    int tt=1;
+    cin>>tt;
+    while(tt--){
+        solve();
         // cout<<"-----------"<<nn;
     }
     return 0;
